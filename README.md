@@ -16,7 +16,7 @@ Coco:
 
     console.log m.encode ()
 
-Using Node.js' `http.request` to make a multipart/form-data encoded POST request.
+Using Node.js' `http.request` to make a multipart/form-data encoded POST request:
 
     http = require \http
 
