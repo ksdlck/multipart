@@ -16,6 +16,21 @@ Coco:
 
     console.log m.encode ()
 
+Javascript:
+
+    var Multipart = require('multipart').Multipart;
+
+    var m = new Multipart;
+
+    m.add('key', 'value');
+    m.add('filekey', 'filevalue', 'filename', 'filetype');
+
+    console.log(m.encode());
+
+
+POSTING multipart/form-data IN NODE
+-----------------------------------
+
 Using Node.js' `http.request` to make a multipart/form-data encoded POST request:
 
     http = require \http
