@@ -1,0 +1,5 @@
+{spawn} = require \child_process
+
+task \build ! ->
+  spawn \coco [\-c \-o \. \src]
+  spawn \bash [\-c 'find src | grep -v \.co$ | while read src; do dst="${src##src/}"; if test -d "$src"; then echo mkdir "$dst"; else echo cp "$src" "$dst"; fi; done']

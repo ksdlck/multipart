@@ -1,0 +1,18 @@
+class exports.Multipart
+  !->
+    @boundary = "#{Math.random ()}"
+    @data = []
+  add: !(name, val, filename, type)->
+    @data.push {name, val, filename, type}
+  encode: ->
+    cont = ""
+    for {name, val, filename, type} of @data
+      cont += "--#{@boundary}\r\n"
+      cont += "Content-Disposition: form-data; name=\"#name\""
+      if filename?
+        cont += "; filename=\"#filename\""
+        if type?
+          cont += "\r\nContent-Type: #type"
+      cont += "\r\n"
+      cont += "\r\n#val\r\n"
+    cont += "--#{@boundary}--"

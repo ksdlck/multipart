@@ -1,0 +1,8 @@
+{Multipart} = require \../lib/multipart
+
+m = new Multipart
+m.add \key \value
+m.add \key \value \filename \type
+m.add \key \value
+
+console.log m.encode ()

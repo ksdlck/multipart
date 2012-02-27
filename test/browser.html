@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <script src="../lib/multipart.js"></script>
+  </head>
+  <body>
+    <pre><script>
+        var m = new Multipart;
+        m.add("key", "value");
+        m.add("filekey", "filevalue", "filename", "filetype");
+        document.write(m.encode());
+    </script></pre>
+  </body>
+</html>
