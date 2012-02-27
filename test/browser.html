@@ -1,12 +1,13 @@
 <html>
   <head>
-    <script src="../lib/multipart.js"></script>
+    <script src="../browser/multipart.js"></script>
   </head>
   <body>
     <pre><script>
         var m = new Multipart;
         m.add("key", "value");
         m.add("filekey", "filevalue", "filename", "filetype");
+        m.add("\"quoted\" key", "value");
         document.write(m.encode());
     </script></pre>
   </body>

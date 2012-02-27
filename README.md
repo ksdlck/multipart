@@ -6,6 +6,7 @@ SYNOPSIS
 --------
 
 Coco:
+
     {Multipart} = require \multipart
 
     m = new Multipart
@@ -14,6 +15,22 @@ Coco:
     m.add \filekey \filevalue \filename \filetype
 
     console.log m.encode ()
+
+Using Node.js' `http.request` to make a multipart/form-data encoded POST request.
+
+    http = require \http
+
+    m = new Multipart
+
+    m.add \field1 \value1
+    m.add \field2 \value2
+
+    req = http.request do
+      headers:
+        "Content-Type": "multipart/form-data; boundary=#{m.boundary}"
+
+    req.write m.encode ()
+    req.end ()
 
 LICENSE
 -------

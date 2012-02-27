@@ -2,8 +2,6 @@
 
 m = new Multipart
 
-m.add \key \value
-m.add \key \value \filename \type
-m.add \key \value
+m.add "this key has \"quotes\" in it" \value
 
 console.log m.encode ()

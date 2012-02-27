@@ -1,3 +1,12 @@
+escape = (r)->
+  c = ""
+  i = 0
+  until -1 is (i = r.indexOf \")
+    c += r.substring 0, i
+    c += '\\"'
+    r = r.substring i + 1, r.length
+  c + r
+
 class exports.Multipart
   !->
     @boundary = "#{Math.random ()}"
@@ -8,9 +17,9 @@ class exports.Multipart
     cont = ""
     for {name, val, filename, type} of @data
       cont += "--#{@boundary}\r\n"
-      cont += "Content-Disposition: form-data; name=\"#name\""
+      cont += "Content-Disposition: form-data; name=\"#{escape name}\""
       if filename?
-        cont += "; filename=\"#filename\""
+        cont += "; filename=\"#{escape filename}\""
         if type?
           cont += "\r\nContent-Type: #type"
       cont += "\r\n"
